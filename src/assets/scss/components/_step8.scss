@@ -1,0 +1,69 @@
+.congrats-wrapper {
+  position: relative;
+  width: 95%;
+  margin: 0 auto;
+  padding: 50px 0 100px;
+  @include extraLarge {
+    width: 95%;
+  }
+  @include large {
+    width: 100%;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url('~@/assets/images/congrats-shape-left.png');
+    width: 337px;
+    height: 337px;
+    @include extraLarge {
+      left: -30px;
+    }
+    @include large {
+      left: -30px;
+    }
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url('~@/assets/images/congrats-shape-right.png');
+    width: 337px;
+    height: 337px;
+    @include extraLarge {
+      right: -30px;
+    }
+    @include large {
+      right: -30px;
+    }
+  }
+  .inner {
+    .rating {
+      margin-bottom: 30px;
+      img {
+        max-width: 235px;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+    .content {
+      h3 {
+        font-size: 52px;
+        color: #fff;
+        margin-bottom: 10px;
+        @include large {
+          font-size: 46px;
+        }
+      }
+      p {
+        font-size: 28px;
+        font-weight: 600;
+        color: lighten($secondaryColor, 35%);
+      }
+    }
+  }
+}

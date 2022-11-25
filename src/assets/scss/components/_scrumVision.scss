@@ -1,0 +1,61 @@
+.scrum-vision {
+  width: 740px;
+  height: auto;
+  margin: 30px auto;
+  position: relative;
+  @include large {
+    width: 675px;
+  }
+  .clock {
+    box-sizing: content-box !important;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    border: solid 4px #4b00e2;
+    left: 565px;
+    top: 137px;
+    transform: scale(1.9);
+    @include large {
+      left: 514px;
+      top: 122px;
+      transform: scale(1.7);
+    }
+    .minutes {
+      position: absolute;
+      width: 50px;
+      height: 5px;
+      top: 22.5px;
+      animation: spinRound 0.81s linear 0s infinite;
+      &:before {
+        content: '';
+        height: 5px;
+        width: 22px;
+        position: absolute;
+        right: 5px;
+        background: #4b00e2;
+        border-radius: 5px;
+      }
+    }
+    .hours {
+      position: absolute;
+      width: 50px;
+      height: 5px;
+      top: 22.5px;
+      animation: spinRound 9s linear 0s infinite;
+      &:before {
+        content: '';
+        height: 5px;
+        width: 16px;
+        position: absolute;
+        right: 11px;
+        background: #4b00e2;
+        border-radius: 5px;
+      }
+    }
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+}

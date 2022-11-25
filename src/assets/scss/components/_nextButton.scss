@@ -1,0 +1,79 @@
+.btn-next {
+  display: inline-block;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 18px 35px;
+  color: #fff;
+  vertical-align: middle;
+  background: linear-gradient(96.49deg, #f16262 0%, #3200ff 102.71%);
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+  width: 280px;
+  text-align: center;
+  cursor: pointer;
+  @include setTransition;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    background: linear-gradient(96.49deg, #3200ff 0%, #f16262 102.71%);
+    z-index: -1;
+    opacity: 0;
+    border-radius: 5px;
+    @include setTransition;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 30px;
+    @include setBtnLinearGradient;
+    filter: blur(20px);
+    z-index: -1;
+  }
+  &:hover {
+    color: #fff;
+    &::before {
+      opacity: 1;
+    }
+    svg {
+      margin-left: 14px;
+    }
+  }
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.4;
+    background: $primaryBgColor;
+    border: 1px solid #fff;
+    &::after {
+      opacity: 0;
+    }
+  }
+
+  svg {
+    margin-left: 7px;
+    @include setTransition;
+  }
+}
+
+.btn-outline {
+  display: inline-block;
+  @include setBtnLinearGradient;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 1px;
+  cursor: pointer;
+  &:hover {
+    .btn-prev {
+      background: rgba(0, 0, 0, 0);
+      color: #fff;
+    }
+  }
+}

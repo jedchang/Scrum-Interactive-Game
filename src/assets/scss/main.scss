@@ -1,0 +1,30 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Microsoft JhengHei', -apple-system, '微軟正黑體', Helvetica,
+    Arial, sans-serif;
+  background-color: #f9f5f4;
+  overflow-x: hidden;
+}
+
+#app {
+  font-family: 'Microsoft JhengHei', -apple-system, '微軟正黑體', Helvetica,
+    Arial, sans-serif;
+  text-align: center;
+  user-select: none;
+  color: $primaryTextColor;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+    @include setTransition;
+  }
+}

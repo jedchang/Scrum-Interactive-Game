@@ -1,0 +1,108 @@
+.role-item {
+  border: 2px solid rgba(177, 115, 253, 0.7);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(5px);
+  padding: 25px 15px 10px;
+  margin: 15px auto 50px 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  &::before {
+    content: attr(data-name);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 3px 15px;
+    background: darken($tertiaryColor, 10%);
+    border-radius: 15px;
+    position: absolute;
+    top: -12px;
+    left: -17px;
+  }
+  &.reverse {
+    margin: 15px 0 50px auto;
+    flex-direction: row-reverse;
+    border: 2px solid rgba(241, 98, 98, 0.7);
+    &::before {
+      content: attr(data-name);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 3px 15px;
+      background: darken($primaryColor, 5%);
+      border-radius: 15px;
+      position: absolute;
+      top: -12px;
+      right: -17px;
+      left: auto;
+    }
+  }
+
+  .role {
+    width: 75px;
+    position: relative;
+    img {
+      width: 75px;
+      height: auto;
+    }
+  }
+  .talk {
+    padding: 0px 10px;
+    margin: 0 10px;
+    text-align: left;
+    p {
+      color: lighten($secondaryColor, 40%);
+      line-height: 1.6;
+      font-size: 16px;
+      font-weight: 500;
+      margin: 5px 0;
+      span {
+        color: #ffffff;
+        text-shadow: 0 0 5px white;
+      }
+      svg {
+        margin-right: 7px;
+      }
+    }
+  }
+  a.has-pic {
+    margin: 0 10px;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    &.jira {
+      width: 190px;
+      height: 62px;
+      background-image: url('~@/assets/images/logo-jira.png');
+      &:hover {
+        background-position: center -62px;
+      }
+      &.small {
+        @include large {
+          height: 52px;
+        }
+        &:hover {
+          @include large {
+            background-position: center -52px;
+          }
+        }
+      }
+    }
+    &.confluence {
+      width: 240px;
+      height: 38px;
+      background-image: url('~@/assets/images/logo-confluence.png');
+      @include large {
+        height: 30px;
+      }
+      &:hover {
+        background-position: center -38px;
+        @include large {
+          background-position: center -30px;
+        }
+      }
+    }
+  }
+}

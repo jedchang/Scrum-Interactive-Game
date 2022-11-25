@@ -1,0 +1,234 @@
+#main {
+  background: #1e1e2c;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: linear-gradient(
+      180deg,
+      $primaryBgColor,
+      rgba(9, 10, 26, 0.4)
+    ),
+    url('~@/assets/images/bg-main.jpg');
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .view-notice {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    @include medium {
+      display: flex;
+    }
+    @include small {
+      display: flex;
+      width: 90%;
+    }
+    @include extraSmall {
+      display: flex;
+      width: 90%;
+    }
+    .icon {
+      width: 200px;
+      margin-bottom: 20px;
+      position: relative;
+      @include extraSmall {
+        width: 155px;
+        margin-bottom: 10px;
+      }
+      .eye-block {
+        background: lighten($primaryBgColor, 10%);
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 25px;
+        transform: scale(1.8) translate(-11px, -4px);
+        @include extraSmall {
+          transform: scale(1.4) translate(-14px, -8px);
+        }
+      }
+      .eye-detail {
+        background: white;
+        width: 23px;
+        height: 23px;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        margin: 15px 0 0 7px;
+        border-radius: 50px;
+        animation: eyeAni 1s infinite alternate;
+      }
+      .eye {
+        background: $primaryBgColor;
+        width: 7px;
+        height: 7px;
+        position: relative;
+        top: 4px;
+        left: 12px;
+        border-radius: 50px;
+      }
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    p {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 600;
+      text-shadow: 0 0 5px #fff;
+      margin-bottom: 5px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      @include extraSmall {
+        font-size: 4.55vmin;
+      }
+    }
+  }
+
+  .view-container {
+    display: block;
+    @include medium {
+      display: none;
+    }
+    @include small {
+      display: none;
+    }
+    @include extraSmall {
+      display: none;
+    }
+  }
+
+  .step-block {
+    height: auto;
+    min-height: 600px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 60px 0;
+    .btn-wrapper {
+      display: flex;
+      justify-content: center;
+      align-self: start;
+      width: 100%;
+    }
+  }
+
+  .logo {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    position: relative;
+    z-index: 6;
+    &.active {
+      display: flex;
+    }
+    .clock {
+      box-sizing: content-box !important;
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 30px;
+      border: solid 4px #e2586f;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%) scale(1.2);
+      margin-top: -15px;
+      margin-left: 7px;
+      .minutes {
+        position: absolute;
+        width: 50px;
+        height: 5px;
+        top: 22.5px;
+        animation: spinRound 0.81s linear 0s infinite;
+        &:before {
+          content: '';
+          height: 5px;
+          width: 22px;
+          position: absolute;
+          right: 5px;
+          background: #e2586f;
+          border-radius: 5px;
+        }
+      }
+      .hours {
+        position: absolute;
+        width: 50px;
+        height: 5px;
+        top: 22.5px;
+        animation: spinRound 9s linear 0s infinite;
+        &:before {
+          content: '';
+          height: 5px;
+          width: 16px;
+          position: absolute;
+          right: 11px;
+          background: #e2586f;
+          border-radius: 5px;
+        }
+      }
+    }
+    img {
+      width: 200px;
+      height: auto;
+    }
+  }
+  .loader {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    background-color: #fff;
+    transform: translateX(0%);
+    transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1) 0.1s;
+    will-change: transform;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include small {
+      display: none;
+    }
+    @include extraSmall {
+      display: none;
+    }
+  }
+
+  .title {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 35px auto 20px;
+    width: 800px;
+    h1 {
+      color: lighten($secondaryColor, 35%);
+      font-size: 48px;
+      font-weight: 600;
+      font-family: 'Righteous', cursive;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    p {
+      color: #fff;
+      font-weight: 600;
+      font-size: 18px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+  }
+}

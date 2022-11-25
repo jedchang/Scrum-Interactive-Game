@@ -1,0 +1,49 @@
+@mixin setTransition($time: 0.4s) {
+  transition: all $time 0s ease;
+}
+
+@mixin setBtnLinearGradient($direction: right) {
+  background: linear-gradient(96.49deg, #f16262 0%, #3200ff 102.71%);
+}
+
+@mixin extraSmall320 {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+@mixin extraSmall {
+  @media (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (min-width: 576px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (min-width: 768px) and (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: 992px) and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin extraLarge {
+  @media (min-width: 1200px) and (max-width: 1399px) {
+    @content;
+  }
+}
+
+@mixin extraExtraLarge {
+  @media (min-width: 1400px) {
+    @content;
+  }
+}

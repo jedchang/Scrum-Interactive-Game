@@ -199,6 +199,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    @include medium {
+      display: none;
+    }
     @include small {
       display: none;
     }
@@ -217,7 +220,7 @@
     width: 800px;
     h1 {
       color: lighten($secondaryColor, 35%);
-      font-size: 48px;
+      font-size: 46px;
       font-weight: 600;
       font-family: 'Righteous', cursive;
       line-height: 1;

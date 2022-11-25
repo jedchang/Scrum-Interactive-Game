@@ -18,7 +18,7 @@ body {
   text-align: center;
   user-select: none;
   color: $primaryTextColor;
-
+  overflow-x: hidden;
   * {
     box-sizing: border-box;
   }

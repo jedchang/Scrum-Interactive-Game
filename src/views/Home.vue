@@ -10,11 +10,13 @@
         alt="loading"
       >
     </div>
+
     <div class="loader" />
     <ProgressBar
       v-if="step !== 0"
       :set-progress="currentProgress"
     />
+
     <div class="view-notice">
       <div class="icon">
         <div class="eye-block">
@@ -31,6 +33,7 @@
       <p>以獲得最佳瀏覽體驗。</p>
     </div>
     <div class="container view-container">
+      <!-- home -->
       <div
         v-if="step === 0"
         class="home"
@@ -56,9 +59,11 @@
           </div>
         </div>
       </div>
+      <!-- step1 -->
       <div
         v-if="step === 1"
         class="step-block"
+        :class="{active : stepActive}"
       >
         <Step1 />
         <div class="btn-wrapper">
@@ -70,9 +75,11 @@
           </NextButton>
         </div>
       </div>
+      <!-- step2 -->
       <div
         v-if="step === 2"
         class="step-block"
+        :class="{active : stepActive}"
       >
         <Step2 @product-list="getProductList" />
         <div class="btn-wrapper">
@@ -96,9 +103,11 @@
           </NextButton>
         </div>
       </div>
+      <!-- step3 -->
       <div
         v-if="step === 3"
         class="step-block"
+        :class="{active : stepActive}"
       >
         <Step3 />
         <div class="btn-wrapper">
@@ -110,9 +119,11 @@
           </NextButton>
         </div>
       </div>
+      <!-- step4 -->
       <div
         v-if="step === 4"
         class="step-block"
+        :class="{active : stepActive}"
       >
         <Step4
           @sprint-list="getSprintList"
@@ -146,9 +157,11 @@
           </NextButton>
         </div>
       </div>
+      <!-- step5 -->
       <div
         v-if="step === 5"
         class="step-block"
+        :class="{active : stepActive}"
       >
         <Step5 />
         <div class="btn-wrapper">
@@ -160,9 +173,11 @@
           </NextButton>
         </div>
       </div>
+      <!-- step6 -->
       <div
         v-if="step === 6"
         class="step-block"
+        :class="{active : stepActive}"
       >
         <Step6 @drag-complete="getDragComplete" />
         <div class="btn-wrapper">
@@ -186,9 +201,11 @@
           </NextButton>
         </div>
       </div>
+      <!-- step7 -->
       <div
         v-if="step === 7"
         class="step-block"
+        :class="{active : stepActive}"
       >
         <Step7
           @done-completed="getDoneCompleted"
@@ -215,9 +232,11 @@
           </NextButton>
         </div>
       </div>
+      <!-- step8 -->
       <div
         v-if="step === 8"
-        class="step-block"
+        class="step-block finished"
+        :class="{active : stepActive}"
       >
         <Step8 />
         <div class="btn-wrapper">
@@ -265,6 +284,7 @@ export default {
   data() {
     return {
       step: 0,
+      stepActive: false,
       currentProgress: 0,
       timer: 0,
       isPrev: false,
@@ -285,6 +305,7 @@ export default {
         clearTimeout(this.timer)
         this.isCompleted = false
         this.timer = 0
+        this.stepActive = true
       }
     },
     step(val) {
@@ -300,6 +321,7 @@ export default {
     this.timer = 0
   },
   methods: {
+    // 接收 Step2 $emit 事件
     getProductList(data) {
       this.productList = data
     },
@@ -333,12 +355,13 @@ export default {
       }
     },
     async startTransition(number) {
-      console.log(number)
       const loader = document.querySelector('.loader')
       loader.style.transform = 'translateX(0%)'
       const vm = this
       this.timer = await setTimeout(function () {
         loader.style.transform = 'translateX(100%)'
+        // 頁面切換後移動到頂端
+        // window.scrollTo(0, 0)
         document.documentElement.scrollTop = 0
         if (vm.isNext) {
           vm.step = number

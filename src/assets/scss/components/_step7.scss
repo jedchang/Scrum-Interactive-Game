@@ -102,6 +102,7 @@
       &:last-child {
         margin-bottom: 0;
       }
+      // custom radio button
       input[type='radio'] {
         display: none;
         margin: 4px 0 0;
@@ -119,7 +120,7 @@
             cursor: pointer;
             border-radius: 50%;
             position: relative;
-            border: 1px solid #fff;
+            border: 1px solid #d6ccff;
             &::before {
               content: '';
               opacity: 0;
@@ -135,6 +136,14 @@
               transform: translate(-50%, -50%);
               @include setTransition(0.2s);
             }
+          }
+        }
+        &:hover + label {
+          color: #fff;
+          text-shadow: 0 0 10px #000;
+          & span {
+            border: 1px solid #fff;
+            box-shadow: 0 0 10px #000;
           }
         }
         &:checked + label {

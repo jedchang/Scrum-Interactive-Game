@@ -38,11 +38,31 @@
       right: -17px;
       left: auto;
     }
+    .role {
+      &::before {
+        border: 2px dashed rgba(241, 98, 98, 0.5);
+      }
+    }
   }
 
   .role {
     width: 75px;
     position: relative;
+    &::before {
+      content: '';
+      left: 50%;
+      top: 50%;
+      margin-left: -44.5px;
+      margin-top: -46.5px;
+      width: 85px;
+      height: 85px;
+      background: transparent;
+      border: 2px dashed rgba(177, 115, 253, 0.5);
+      border-radius: 50%;
+      position: absolute;
+      transition: opacity 0.3s linear;
+      animation: roleRotate 10s linear infinite;
+    }
     img {
       width: 75px;
       height: auto;

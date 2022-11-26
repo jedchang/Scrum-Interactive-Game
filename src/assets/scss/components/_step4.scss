@@ -104,12 +104,20 @@
     &:hover {
       color: $primaryColor;
       border: 2px solid $primaryColor;
+      .point {
+        color: $primaryColor;
+        border: 2px solid #4b1818;
+      }
     }
     &.sortable-chosen {
       transform: scale(1.05);
       color: #fff;
       border: 2px solid $primaryColor;
       background-color: $primaryColor;
+      .point {
+        color: #fff;
+        border: 2px solid #fff;
+      }
     }
     &.sortable-ghost {
       color: #fff;
@@ -149,6 +157,7 @@
         position: absolute;
         top: 10px;
         right: 12px;
+        @include setTransition;
         @include extraLarge {
           top: 22px;
         }

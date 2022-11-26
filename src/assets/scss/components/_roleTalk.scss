@@ -8,6 +8,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  position: relative;
   width: 100%;
   &::before {
     content: attr(data-name);

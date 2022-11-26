@@ -10,13 +10,14 @@
         alt="loading"
       >
     </div>
-
-    <div class="loader" />
+    <div
+      class="loader"
+      @transitionend="actionEnd"
+    />
     <ProgressBar
       v-if="step !== 0"
       :set-progress="currentProgress"
     />
-
     <div class="view-notice">
       <div class="icon">
         <div class="eye-block">
@@ -33,7 +34,6 @@
       <p>以獲得最佳瀏覽體驗。</p>
     </div>
     <div class="container view-container">
-      <!-- home -->
       <div
         v-if="step === 0"
         class="home"
@@ -59,11 +59,10 @@
           </div>
         </div>
       </div>
-      <!-- step1 -->
       <div
         v-if="step === 1"
         class="step-block"
-        :class="{active : stepActive}"
+        :class="{active : animationend === 2}"
       >
         <Step1 />
         <div class="btn-wrapper">
@@ -75,11 +74,10 @@
           </NextButton>
         </div>
       </div>
-      <!-- step2 -->
       <div
         v-if="step === 2"
         class="step-block"
-        :class="{active : stepActive}"
+        :class="{active : animationend === 2}"
       >
         <Step2 @product-list="getProductList" />
         <div class="btn-wrapper">
@@ -103,11 +101,10 @@
           </NextButton>
         </div>
       </div>
-      <!-- step3 -->
       <div
         v-if="step === 3"
         class="step-block"
-        :class="{active : stepActive}"
+        :class="{active : animationend === 2}"
       >
         <Step3 />
         <div class="btn-wrapper">
@@ -119,11 +116,10 @@
           </NextButton>
         </div>
       </div>
-      <!-- step4 -->
       <div
         v-if="step === 4"
         class="step-block"
-        :class="{active : stepActive}"
+        :class="{active : animationend === 2}"
       >
         <Step4
           @sprint-list="getSprintList"
@@ -157,11 +153,10 @@
           </NextButton>
         </div>
       </div>
-      <!-- step5 -->
       <div
         v-if="step === 5"
         class="step-block"
-        :class="{active : stepActive}"
+        :class="{active : animationend === 2}"
       >
         <Step5 />
         <div class="btn-wrapper">
@@ -173,11 +168,10 @@
           </NextButton>
         </div>
       </div>
-      <!-- step6 -->
       <div
         v-if="step === 6"
         class="step-block"
-        :class="{active : stepActive}"
+        :class="{active : animationend === 2}"
       >
         <Step6 @drag-complete="getDragComplete" />
         <div class="btn-wrapper">
@@ -201,11 +195,10 @@
           </NextButton>
         </div>
       </div>
-      <!-- step7 -->
       <div
         v-if="step === 7"
         class="step-block"
-        :class="{active : stepActive}"
+        :class="{active : animationend === 2}"
       >
         <Step7
           @done-completed="getDoneCompleted"
@@ -232,11 +225,10 @@
           </NextButton>
         </div>
       </div>
-      <!-- step8 -->
       <div
         v-if="step === 8"
         class="step-block finished"
-        :class="{active : stepActive}"
+        :class="{active : animationend === 2}"
       >
         <Step8 />
         <div class="btn-wrapper">
@@ -284,7 +276,6 @@ export default {
   data() {
     return {
       step: 0,
-      stepActive: false,
       currentProgress: 0,
       timer: 0,
       isPrev: false,
@@ -296,7 +287,8 @@ export default {
       pointExceed: false,
       dragComplete: false,
       doneCompleted: false,
-      betterCompleted: false
+      betterCompleted: false,
+      animationend: 0
     }
   },
   watch: {
@@ -305,7 +297,6 @@ export default {
         clearTimeout(this.timer)
         this.isCompleted = false
         this.timer = 0
-        this.stepActive = true
       }
     },
     step(val) {
@@ -321,7 +312,9 @@ export default {
     this.timer = 0
   },
   methods: {
-    // 接收 Step2 $emit 事件
+    actionEnd() {
+      this.animationend++
+    },
     getProductList(data) {
       this.productList = data
     },
@@ -350,6 +343,9 @@ export default {
     nextStep(number) {
       this.isNext = true
       this.startTransition(number)
+      if (this.animationend >= 2) {
+        this.animationend = 0
+      }
       if (this.step === 8) {
         this.startTransition()
       }
@@ -360,8 +356,6 @@ export default {
       const vm = this
       this.timer = await setTimeout(function () {
         loader.style.transform = 'translateX(100%)'
-        // 頁面切換後移動到頂端
-        // window.scrollTo(0, 0)
         document.documentElement.scrollTop = 0
         if (vm.isNext) {
           vm.step = number

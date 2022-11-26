@@ -9,7 +9,14 @@
     color: #a1a1a1;
     background-color: $primaryBgColor;
     backdrop-filter: blur(5px);
+    @include setTransition;
     width: 32%;
+    &:hover {
+      background-color: lighten($primaryBgColor, 5%);
+      .number {
+        border: 14px solid lighten($primaryBgColor, 5%);
+      }
+    }
     &.daily {
       .inner {
         border: 1px solid rgba(58, 4, 249, 0.7);
@@ -98,6 +105,7 @@
       background-color: rgba(255, 255, 255, 0.7);
       border-radius: 19px 0 0px 0;
       border: 14px solid $primaryBgColor;
+      @include setTransition;
       span {
         font-size: 25px;
         font-weight: 400;

@@ -2,7 +2,7 @@
 
 Scrum 介紹互動遊戲
 
-![](https://images2.imgbox.com/76/e7/F9FgB0Mq_o.jpg)
+![image](https://raw.githubusercontent.com/jedchang/Scrum-Interactive-Game/refs/heads/master/preview.jpg)
 
 ## Demo
 
